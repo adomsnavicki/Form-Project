@@ -1,0 +1,82 @@
+.contact-text-name {
+  padding-right: 23px;
+}
+.contact-text-age {
+  padding-right: 36px;
+}
+.contact-text-phone {
+  padding-right: 19px;
+}
+
+.contact-text-email {
+  padding-right: 20px;
+}
+.person-register-blank {
+  padding: 20px;
+  width: 500px;
+  box-shadow: 3px 3px 3px 1px rgb(180, 180, 180);
+}
+.checkbox-control {
+  padding: 5px;
+}
+.interest-text {
+  padding: 10px 5px;
+
+  border-bottom: 1px solid gray;
+  box-shadow: 1px 1px whitesmoke;
+
+  font-weight: bold;
+}
+.interest-label-text {
+  font-weight: bold;
+}
+.interest-wrapper {
+  box-shadow: 1px 1px 1px gray;
+  border: none;
+}
+.form-control.group {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column-reverse;
+}
+.form-control {
+  padding: 10px;
+  font-weight: bold;
+}
+.group-selection {
+  box-shadow: 1px 1px 1px gray;
+  border: none;
+  display: flex;
+}
+.student-item {
+  box-shadow: 1px 1px 1px 1px gray;
+}
+.student-list-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.group-text {
+  border-bottom: 1px solid gray;
+  box-shadow: 1px 1px whitesmoke;
+  padding: 5px;
+  font-weight: bold;
+}
+.create-button {
+  padding: 10px;
+  margin-top: 20px;
+}
+/* JS */
+
+.popup-info-message {
+  font-size: 20px;
+}
+.input-error-message {
+  color: red;
+  font-size: 16px;
+  font-weight: bold;
+}
+.border-red {
+  border: 1px solid red;
+  padding: 3px;
+}

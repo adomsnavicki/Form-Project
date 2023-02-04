@@ -1,0 +1,162 @@
+<form action="/form-success.html">
+      <input
+        type="text"
+        name="first-name"
+        minlength="2"
+        id="user-first-name"
+        placeholder="Name"
+      />
+      <input
+        type="text"
+        name="last-name"
+        maxlength="10"
+        id="user-last-name"
+        placeholder="Enter your last name"
+      />
+      <input
+        type="number"
+        name="age"
+        id="user-age"
+        placeholder="Age"
+        min="0"
+        max="100"
+        step="0.5"
+      />
+      <input type="color" name="color" id="user-color" value="#0000FF" />
+      <input type="checkbox" name="check" id="user-check" />
+      <input type="date" name="date" id="user-date" />
+      <input type="email" name="email" id="user-email" required />
+      <input type="password" name="pass" id="user-pass" />
+      <input type="radio" name="radio" id="user-radio" />
+      <input
+        type="range"
+        name="range"
+        id="user-range"
+        min="10"
+        max="50"
+        step="5"
+      />
+************************************************
+JS
+
+          let form = document.querySelector('form');
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  // console.log(form);
+  // console.log(event.target);
+
+  // let firstName = document.querySelector('#user-first-name').value;
+  // let lastName = document.querySelector('[name="last-name"]').value;
+  // let age = document.querySelectorAll('[name="age"]')[0].value;
+  // let color = document.getElementsByName('color')[0].value;
+  // let date = document.getElementById('user-date').value;
+
+  // let firstName = form.querySelector('#user-first-name').value;
+  // let lastName = form.querySelector('[name="last-name"]').value;
+  // let age = form.querySelectorAll('[name="age"]')[0].value;
+
+  // let firstName = event.target.querySelector('#user-first-name').value;
+  // let lastName = event.target.querySelector('[name="last-name"]').value;
+  // let age = event.target.querySelectorAll('[name="age"]')[0].value;
+
+  let firstName = event.target['user-first-name'].value;
+  let lastName = event.target['last-name'].value;
+  let age = event.target.age.value;
+
+  console.dir(event.target.elements);
+});
+
+console.dir(event.target.elements);
+
+
+
+
+  //   if (
+  //     firstName.length > 0 &&
+  //     lastName.length > 0 &&
+  //     age.length > 0 &&
+  //     phone.length > 0 &&
+  //     email.length > 0 &&
+  //     knowledge >= 1
+  //   )
+  const studentList = document.querySelector('#students-list');
+
+ const studentItem = document.createElement('div');
+  studentItem.classList.add('student-item');
+
+  studentList.prepend(studentItem);
+
+********************** value input 
+  <input type="range" name="it-knowledge" id="student-it-knowledge" min="1" max="10">
+      <output id="it-knowledge-output">5</output>
+
+      const itKnowledgeInput = studentForm.querySelector('#student-it-knowledge');
+const itKnowledgeOutput = studentForm.querySelector('#it-knowledge-output');
+
+itKnowledgeInput.addEventListener('input', (event) => {
+  itKnowledgeOutput.textContent = event.target.value;
+});
+****************************** rest + timer 
+event.target.reset();
+
+  const messageElement = document.createElement('span');
+  messageElement.textContent = `Sukurtas studentas (${studentName} ${studentSurname})`;
+
+  event.target.after(messageElement)
+
+  setTimeout(() => {
+    messageElement.remove();
+  }, 5000)
+})
+***************************************
+TREČIA DALIS:
+1. Vietoje el. pašto rodyti tik žvaigždutes „****".
+2. Kiekviename „student-item" elemente sukurti mygtuką „Rodyti asmens duomenis".
+
+3. Paspaudus šį mygtuką:
+    3.1. Parodyti to studento el. paštą.
+    3.2. Pakeist mygtuko tekstą į „Slėpti asmens duomenis".
+4. Jeigu asmens duomenys yra rodomi, tai paspaudus mygtuką:
+    4.1. Paslėpti asmens el. paštą.
+    4.2. Mygtuko tekstą pakeisti į „Rodyti asmens duomenis".
+
+
+function myFunction() {
+  var x = document.getElementById("myDIV");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
+
+const btn = document.getElementById('btn');
+
+btn.addEventListener('click', () => {
+  const form = document.getElementById('form');
+
+  if (form.style.display === 'none') {
+    // 👇️ this SHOWS the form
+    form.style.display = 'block';
+  } else {
+    // 👇️ this HIDES the form
+    form.style.display = 'none';
+  }
+});
+
+[08:10] Romanas Venckus
+
+KETVIRTA DALIS (studento ištrynimas):
+1. Prie kiekvieno sukurti studento elemento pridėti mygtuką „Ištrinti studentą".
+2. Paspaudus šį mygtuką, studento elementas yra ištrinamas.
+3. Ištrynus studentą, turi iššokti <span> elementas, kuris informuoja apie studento ištrynimą: „Studentas (Vardas Pavardė) sėkmingai ištrintas.". Šis span elementas dingsta po 5 sekundžių.
+
+PENKTA UŽDUOTIS (formos validacija naudojant JavaScript):
+1. Priduodant formą (submit) patikrinti ar privalomi laukeliai nėra tušti.
+2. Jeigu bent vienas privalomas formos laukelis yra tuščias:
+    2.1. Formos alert žinutėje reikia parašyti, jog ne visi laukeliai yra užpildyti. Šis tekstas turi būti raudonos spalvos.
+    2.2. Kiekvienas privalomas input laukelis, kuris nėra užpildytas:
+        2.2.1. Turi būti apvestas raudonu rėmeliu.
+        2.2.2. Šalia laukelio turi būti parašytas raudonas tekstas: „Šis laukelis yra privalomas".

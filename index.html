@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <form class="person-register-blank">
+      <div class="contact-wrapper">
+        <div class="form-control">
+          <label class="contact-text-name" for="student-name">Name:</label>
+          <input class="required" type="text" name="name" id="student-name" />
+        </div>
+
+        <div class="form-control">
+          <label class="contact-text-surname" for="student-surname"
+            >Surname:</label
+          >
+          <input
+            class="required"
+            type="text"
+            name="surname"
+            id="student-surname"
+            value="DON"
+          />
+        </div>
+
+        <div class="form-control">
+          <label class="contact-text-age" for="student-age">Age:</label>
+          <input
+            class="required"
+            type="number"
+            name="age"
+            id="student-age"
+            value="12"
+          />
+        </div>
+
+        <div class="form-control">
+          <label class="contact-text-phone" for="student-phone">Phone:</label>
+          <input
+            value="121212"
+            class="required"
+            type="tel"
+            name="phone"
+            id="student-phone"
+          />
+        </div>
+
+        <div class="form-control">
+          <label class="contact-text-email" for="student-email">Email:</label>
+          <input
+            class="required"
+            type="email"
+            name="email"
+            id="student-email"
+            value="aaaa@aaa.lt"
+          />
+        </div>
+
+        <div class="form-control">
+          <label for="student-it-knowledge">IT knowledge:</label>
+          <input
+            type="range"
+            name="it-knowledge"
+            id="student-it-knowledge"
+            min="1"
+            max="10"
+            step="1"
+            value="5"
+          />
+          <output id="it-knowledge-output">5</output>
+        </div>
+      </div>
+      <fieldset class="group-selection">
+        <legend class="group-text">Select group:</legend>
+
+        <div class="form-control group">
+          <input type="radio" name="group" id="group-1" value="feu-1" />
+          <label for="group-1">FEU 1gr.</label>
+        </div>
+
+        <div class="form-control group">
+          <input type="radio" name="group" id="group-2" value="feu-2" />
+          <label for="group-2">FEU 2gr.</label>
+        </div>
+
+        <div class="form-control group">
+          <input type="radio" name="group" id="group-3" value="feu-3" />
+          <label for="group-3">FEU 3gr.</label>
+        </div>
+
+        <div class="form-control group">
+          <input type="radio" name="group" id="group-4" value="feu-4" />
+          <label for="group-4">FEU 4gr.</label>
+        </div>
+
+        <div class="form-control group">
+          <input type="radio" name="group" id="group-5" value="feu-5" />
+          <label for="group-5">FEU 5gr.</label>
+        </div>
+      </fieldset>
+
+      <fieldset class="interest-wrapper">
+        <legend class="interest-text">Interest:</legend>
+        <div class="checkbox-control">
+          <input
+            type="checkbox"
+            name="interest"
+            id="interest-1"
+            value="javascript"
+          />
+          <label class="interest-label-text" for="interest-1">javascript</label>
+
+          <input
+            type="checkbox"
+            name="interest"
+            id="interest-2"
+            value="python"
+          />
+          <label class="interest-label-text" for="interest-2">python</label>
+
+          <input type="checkbox" name="interest" id="interest-3" value="java" />
+          <label class="interest-label-text" for="interest-3">java</label>
+
+          <input type="checkbox" name="interest" id="interest-4" value="php" />
+          <label class="interest-label-text" for="interest-4">php</label>
+        </div>
+      </fieldset>
+
+      <input class="create-button" type="submit" value="Create Student" />
+    </form>
+
+    <div id="student-list"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
