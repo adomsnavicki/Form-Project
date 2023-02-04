@@ -68,8 +68,6 @@ form.addEventListener("submit", (event) => {
     return;
   }
 
-  event.target.reset();
-
   const firstName = event.target["student-name"].value;
   const lastName = event.target["student-surname"].value;
   const age = event.target["student-age"].value;
@@ -183,6 +181,7 @@ form.addEventListener("submit", (event) => {
 
   let createPersonText = `Congratulations! You are created student. (${firstName} ${lastName})`;
   messageAlert(event.target, createPersonText, "green");
+  event.target.reset();
 });
 
 function messageAlert(element, message, color = "black") {
