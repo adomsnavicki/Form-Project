@@ -1,0 +1,337 @@
+PIRMA DALIS:
+Sukurti kontaktų formą.
+1. Kontaktų formoje turi būti šie laukeliai:
+    1. Tekstinis laukelis vardui (privalomas).
+    2. Tekstinis laukelis pavardei (privalomas).
+    3. Skaičiaus laukelis amžiui (privalomas).
+    4. Laukelis įvesti telefono numerį (neprivalomas).
+    5. Laukelis įvesti el. paštą (privalomas).
+    6. Range tipo laukelis, kuris skirtas įvertinti savo IT žinias nuo 1 iki 10. Galimas vertinimas tik sveikiems skaičiams.
+    7. Radio tipo laukeliai, kuriuose pasirenkamas grupės numeris. Turi būti galimybė pasirinkti grupes nuo FEU 1gr. iki FEU 5gr
+ 8. Šalia kiekvieno įvesties (input) elemento, pridėti label elementą, kuris žymi laukelio pavadinimą.
+ANTRA DALIS:
+4. Formoje pridėti „checkbox" tipo input'ą, kuriame pateikta galimybę rinktis iš dominančių programavimo kalbų.
+
+
+ANTRA DALIS:
+1. Sukurti div elementą, kuris turės id „students-list".
+2. Kiekvieną kartą pridavus formą (submit), turi būti sukurtas naujas div elementas su klase „student-item" ir pridedamas į „students-list" elemento pradžią.
+3. Duomenys apie studentą turi būti įdėti į „student-item" elementą.
+
+Field required!
+
+
+PAPILDOMA UŽDUOTIS (formos validacija naudojant JavaScript):
+Papildyti formos validaciją. Jeigu:
+1. Vardas yra trumpesnis nei 3 simboliai, parašyti: „Vardas privalo būti bent 3 simbolių ilgumo".
+2. Pavardė yra trumpesnė nei 3 simboliai, parašyti: „Pavardė privalo būti bent 3 simbolių ilgumo".
+3. Amžius yra neigamas, parašyti: „Amžius privalo būti teigiamas skaičius".
+4. Amžius yra daugiau nei 120 metų, parašyti: „Įvestas amžius yra per didelis".
+5. Telefono numeris yra mažiau nei 9 arba daugiau nei 12 simbolių, parašyti: „Įvestas telefono numeris yra neteisingas".
+6. Elektroninis paštas yra trumpesnis nei 8 simboliai ir jame nėra panaudotas @ ir . simboliai, parašyti: „Įvestas elektroninis paštas yra neteisingas".
+
+required.forEach((element, index) => {
+        element.classList.remove("alert-border");
+        element.classList.remove("input-error-message");
+
+        if (index > 0) {
+            // stabdom, nes aktualus tik vardas
+            return;
+        }
+
+        if (required[index].value.length > 2) {
+            // stabdom, nes vardas ilgesnis 3 simboliai
+            return;
+        }
+
+        // Input neatitinka salygos, isvedam error
+        const inputErrorMessage = document.createElement("span");
+        inputErrorMessage.classList.add("input-error-message");
+        inputErrorMessage.textContent =
+            "Vardas privalo būti bent 3 simbolių ilgumo";
+        element.after(inputErrorMessage);
+    });
+
+
+if (required[0].value.length < 3) {
+      const inputErrorMessage = document.createElement("span");
+      inputErrorMessage.classList.add("input-error-message");
+      inputErrorMessage.textContent =
+        "Vardas privalo būti bent 3 simbolių ilgumo";
+      required[0].after(inputErrorMessage);
+    }
+
+
+
+  ŠEŠTA UŽDUOTIS:
+1. Sukurti pradinius duomenų masyvą, kuriame būtų bent 5 studentų duomenys (objektų formatu).
+2. Sukurti funkciją, kuri priima šiuos duomenis ir užkrovus puslapį į ekraną iškart išveda duomenis iš šio masyvo.
+
+initialDate = []
+
+
+
+
+if (index === 2) {
+        // issisaugom vete
+        const value = required[index].valueAsNumber;
+        if (value > 0 && value < 120) {
+            return;
+        }
+        const inputErrorMessage = document.createElement('span');
+        inputErrorMessage.classList.add('input-error-message');
+
+        // jei maziau 0
+        if (value < 0) {
+            inputErrorMessage.textContent = 'Amžius privalo būti teigiamas skaičius';
+        } else {
+            // jei daugiau nei 120
+            // zinome, kad daugiau nei 120, nes auksciau tikrinom value > 0 && value < 120
+            inputErrorMessage.textContent = 'Įvestas amžius yra per didelis';
+        }
+
+        element.after(inputErrorMessage);
+        formIsValid = false;
+    }
+
+
+
+
+
+     if (valueLength > 8) {
+        inputErrorMessage.textContent =
+          "Email must have at least 8 characters!";
+      }
+
+      if (valueText.match(/[.]/) && valueText.match(/[@]/))
+
+
+
+
+       const inputErrorMessage = document.createElement("span");
+      inputErrorMessage.classList.add("input-error-message");
+
+
+
+      inputErrorMessage.textContent =
+        "Email must have at least 8 characters and these characters(@|.)! ";
+
+"There are empty spaces!";
+
+        studentList = document.querySelector("#student-list");
+  studentList.classList.add("student-list-wrapper");
+  let studentItem = document.createElement("div");
+  studentItem.classList.add("student-item");
+
+  let infoAboutStudentH1 = document.createElement("h1");
+  let infoAboutStudentLiName = document.createElement("li");
+  let infoAboutStudentLiLastName = document.createElement("li");
+  let infoAboutStudentLiAge = document.createElement("li");
+  let infoAboutStudentLiPhone = document.createElement("li");
+  let infoAboutStudentLiEmail = document.createElement("li");
+  let infoAboutStudentLiKnowledge = document.createElement("li");
+  let infoAboutStudentLiGroup = document.createElement("li");
+  let infoAboutStudentH2 = document.createElement("h2");
+  let buttonShowPersonData = document.createElement("button");
+  let buttonDelPerson = document.createElement("button");
+
+  infoAboutStudentH1.textContent = "Info About Student:";
+  infoAboutStudentH2.textContent = "Interest: Empty...";
+  buttonShowPersonData.textContent = "Show person data";
+  buttonDelPerson.textContent = "Delete person";
+
+  studentItem.append(
+    infoAboutStudentH1,
+    infoAboutStudentLiName,
+    infoAboutStudentLiLastName,
+    infoAboutStudentLiAge,
+    infoAboutStudentLiPhone,
+    infoAboutStudentLiEmail,
+    infoAboutStudentLiKnowledge,
+    infoAboutStudentLiGroup,
+    infoAboutStudentH2,
+    buttonShowPersonData,
+    buttonDelPerson
+  );
+
+  studentList.prepend(studentItem);
+
+  infoAboutStudentLiName.textContent = `Name: ${firstName}`;
+  infoAboutStudentLiLastName.textContent = `Lastname: ${lastName}`;
+  infoAboutStudentLiAge.textContent = `Age: ${age}`;
+  infoAboutStudentLiPhone.textContent = `Phone: ${phone}`;
+  infoAboutStudentLiEmail.textContent = `Email:`;
+  infoAboutStudentLiKnowledge.textContent = `Knowledge: ${knowledge}`;
+  infoAboutStudentLiGroup.textContent = `Group: ${studentGroup.toUpperCase()}`;
+
+  //Sutvakryti ************************
+  const firstNameText = (infoAboutStudentLiName.textContent = `Name: `);
+  const emailText = (infoAboutStudentLiEmail.textContent = `Email:`);
+  let hideText = "********";
+  hideEmailOutput = "";
+  hideFirstName = firstNameText + hideText;
+  if (firstName.length > 1) {
+    infoAboutStudentLiName.textContent = hideFirstName;
+  }
+  if (email.length > 1) {
+    hideEmailOutput += infoAboutStudentLiEmail.textContent += hideText;
+  }
+
+  let output = emailText + email;
+  let nameOutput = firstNameText + firstName;
+  function changeEmail() {
+    if (email.length > 1 && firstName.length > 1)
+      if (
+        infoAboutStudentLiEmail.textContent === hideEmailOutput &&
+        infoAboutStudentLiName.textContent === hideFirstName
+      ) {
+        infoAboutStudentLiEmail.textContent = output;
+        infoAboutStudentLiName.textContent = nameOutput;
+        buttonShowPersonData.textContent = "Hide person data";
+      } else if (
+        infoAboutStudentLiEmail.textContent === output &&
+        infoAboutStudentLiName.textContent === nameOutput
+      ) {
+        infoAboutStudentLiEmail.textContent = emailText + hideText;
+        infoAboutStudentLiName.textContent = firstNameText + hideText;
+        buttonShowPersonData.textContent = "Show person data";
+      } else {
+        infoAboutStudentLiEmail.textContent = output;
+        infoAboutStudentLiName.textContent = nameOutput;
+      }
+  }
+
+  buttonShowPersonData.addEventListener("click", () => {
+    changeEmail();
+  });
+
+  buttonDelPerson.addEventListener("click", () => {
+    studentItem.remove();
+    messageAlert(event.target, removePersonText, "red");
+  });
+  let removePersonText = `You have deleted the person now. (${firstName} ${lastName})`;
+  //Sutvarkyti **********************
+  interest.forEach((element) => {
+    if (interest.length > 0) {
+      let interestLi = document.createElement("li");
+      interestLi.textContent = element.value;
+      infoAboutStudentH2.textContent = "Interest: ";
+      studentItem.append(interestLi, buttonShowPersonData, buttonDelPerson);
+    }
+  });
+  event.target.reset();
+
+  let createPersonText = `Congratulations! You are created student. (${firstName} ${lastName})`;
+  messageAlert(event.target, createPersonText, "green");
+
+
+
+
+
+
+nemeta zinutes visur kai empty !s
+
+
+  alertText = "There are empty spaces!";
+
+  messageAlert(form, alertText, "red");
+
+
+************************************************
+  let formIsValid = true;
+
+  required.forEach((element, index) => {
+    element.classList.remove("alert-border");
+    element.classList.remove("input-error-message");
+    element.classList.remove("border-red");
+
+    if (!element.value) {
+      messageAlert(form, "There is an empty cell!", "red");
+      inputErrorMessage(element, "Field required!");
+      formIsValid = false;
+      return;
+    }
+    if (index === 0) {
+      if (required[index].value.length > 3) {
+        return;
+      }
+
+      inputErrorMessage(element, "Name must have at least 3 characters!");
+      formIsValid = false;
+      return;
+    }
+    if (index === 1) {
+      if (required[index].value.length > 3) {
+        return;
+      }
+      inputErrorMessage(element, "Surname must have at least 3 characters!");
+      formIsValid = false;
+      return;
+    }
+
+    if (index === 2) {
+      const value = required[index].valueAsNumber;
+
+      if (value > 0 && value < 120) {
+        return;
+      }
+
+      if (value < 0) {
+        inputErrorMessage(element, "Age must be a positive number!");
+        formIsValid = false;
+        return;
+      }
+      if (value === 0) {
+        inputErrorMessage(element, "Age cannot be 0!");
+        formIsValid = false;
+        return;
+      }
+
+      if (value > 120) {
+        inputErrorMessage(element, "The age entered is too high!");
+        formIsValid = false;
+        return;
+      }
+    }
+
+    if (index === 3) {
+      const value = required[index].value.length;
+
+      if (value >= 9 && value <= 12) {
+        return;
+      }
+
+      inputErrorMessage(element, "The phone number is incorrect!");
+      formIsValid = false;
+      return;
+    }
+
+    if (index === 4) {
+      const valueLength = required[index].value.length;
+      const valueText = required[index].value;
+
+      if (valueLength < 0) {
+        return;
+      }
+
+      if (valueLength < 8) {
+        inputErrorMessage(
+          element,
+          "Email must have at least 8 characters and these characters(@|.)!"
+        );
+        formIsValid = false;
+        return;
+      }
+
+      if (!valueText.match(/[.]/)) {
+        inputErrorMessage(element, "Email must have this character(.)!");
+        formIsValid = false;
+        return;
+      }
+      if (!valueText.match(/[@]/)) {
+        inputErrorMessage(element, "Email must have this character(@)!");
+        formIsValid = false;
+        return;
+      }
+    }
+  });
