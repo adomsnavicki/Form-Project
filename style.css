@@ -174,8 +174,8 @@
 .comment-area-img {
   width: 250px;
   height: 250px;
-  filter: hue-rotate(90deg);
-  border-radius: 20%;
+  filter: blur(5px);
+  border-radius: 40%;
 }
 
 .comment-area {
@@ -189,8 +189,8 @@
 
 .alert-message-textarea {
   position: absolute;
-  top: 13%;
-  right: 46%;
+  top: 14%;
+  right: 49%;
   z-index: 10;
   width: 200px;
 }
@@ -260,4 +260,101 @@
 }
 #interest-5:hover {
   cursor: pointer;
+}
+
+@media only screen and (max-width: 1700px) {
+  .alert-message-textarea {
+    top: 14%;
+    right: 47%;
+  }
+}
+@media only screen and (max-width: 1500px) {
+  .alert-message-textarea {
+    top: 14%;
+    right: 34%;
+  }
+  .comment-area {
+    position: absolute;
+
+    top: 100px;
+    left: 50%;
+  }
+  .mister-image-wrapper {
+    position: absolute;
+    top: 10%;
+    left: 60%;
+  }
+}
+@media only screen and (max-width: 1400px) {
+  .alert-message-textarea {
+    top: 14%;
+    right: 32%;
+  }
+}
+@media only screen and (max-width: 1250px) {
+  .alert-message-textarea {
+    top: 14%;
+    right: 30%;
+  }
+}
+@media only screen and (max-width: 1150px) {
+  .alert-message-textarea {
+    top: 14%;
+    right: 28%;
+  }
+}
+@media only screen and (max-width: 1100px) {
+  .alert-message-textarea {
+    top: 14%;
+    right: 18%;
+  }
+  .comment-area {
+    position: absolute;
+
+    top: 100px;
+    left: 60%;
+  }
+  .mister-image-wrapper {
+    position: absolute;
+    top: 10%;
+    left: 70%;
+  }
+}
+@media only screen and (max-width: 940px) {
+  .alert-message-textarea {
+    top: 25%;
+    right: 2%;
+  }
+  .comment-area {
+    position: absolute;
+
+    top: 25%;
+    left: 70%;
+  }
+  .mister-image-wrapper {
+    position: absolute;
+    top: 42%;
+    left: 60%;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .person-register-blank::before {
+    content: url("img/Untitled.png");
+    z-index: -1;
+    position: absolute;
+    transform: rotate(90deg);
+    left: 60%;
+  }
+  #mister-image {
+    display: none;
+  }
+  .all-wrapper {
+    z-index: 1;
+  }
+  .alert-message-textarea {
+    top: 0%;
+    right: 2%;
+    border-radius: 10px;
+    background-color: #c6a8db;
+  }
 }
