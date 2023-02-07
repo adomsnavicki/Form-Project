@@ -3,7 +3,9 @@
   height: 1200px;
   position: relative;
 }
-
+.required {
+  border-radius: 5px;
+}
 .mister-image-wrapper {
   position: absolute;
   top: 10%;
@@ -72,6 +74,7 @@
   border: none;
   display: flex;
 }
+
 .student-item {
   z-index: 1;
   list-style: none;
@@ -111,7 +114,7 @@
   background-color: #8e45c5;
   box-shadow: 0 5px #562a75;
   position: absolute;
-  top: 385px;
+  top: 412px;
   left: 400px;
   color: white;
 }
@@ -190,4 +193,71 @@
   right: 46%;
   z-index: 10;
   width: 200px;
+}
+
+/* Prideti class */
+#group-1 {
+  height: 20px;
+}
+#group-2 {
+  height: 20px;
+}
+#group-3 {
+  height: 20px;
+}
+#group-4 {
+  height: 20px;
+}
+#group-5 {
+  height: 20px;
+}
+#group-1:hover {
+  cursor: pointer;
+}
+#group-2:hover {
+  cursor: pointer;
+}
+#group-3:hover {
+  cursor: pointer;
+}
+#group-4:hover {
+  cursor: pointer;
+}
+#group-5:hover {
+  cursor: pointer;
+}
+#interest-1 {
+  height: 20px;
+  width: 20px;
+}
+#interest-2 {
+  height: 20px;
+  width: 20px;
+}
+#interest-3 {
+  height: 20px;
+  width: 20px;
+}
+#interest-4 {
+  height: 20px;
+  width: 20px;
+}
+#interest-5 {
+  height: 20px;
+  width: 20px;
+}
+#interest-1:hover {
+  cursor: pointer;
+}
+#interest-2:hover {
+  cursor: pointer;
+}
+#interest-3:hover {
+  cursor: pointer;
+}
+#interest-4:hover {
+  cursor: pointer;
+}
+#interest-5:hover {
+  cursor: pointer;
 }
