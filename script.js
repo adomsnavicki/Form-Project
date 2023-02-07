@@ -51,13 +51,16 @@ const initialData = [
   },
 ];
 
+const data = [];
+
 const form = document.querySelector("form");
+
+let editStudent = null;
 
 const itKnowledgeInput = form.querySelector("#student-it-knowledge");
 const itKnowledgeOutput = form.querySelector("#it-knowledge-output");
 
 itKnowledgeInput.addEventListener("input", (event) => {
-  itKnowledgeOutput.value = event.target.value;
   itKnowledgeOutput.textContent = event.target.value;
 });
 
@@ -77,111 +80,41 @@ form.addEventListener("submit", (event) => {
   const studentGroup = event.target.group.value;
   const interest = event.target.querySelectorAll('[name="interest"]:checked');
 
-  studentList = document.querySelector("#student-list");
-  studentList.classList.add("student-list-wrapper");
-  let studentItem = document.createElement("div");
-  studentItem.classList.add("student-item");
+  let interests = event.target.querySelectorAll('[name="interest"]:checked');
 
-  let infoAboutStudentH1 = document.createElement("h1");
-  let infoAboutStudentLiName = document.createElement("li");
-  let infoAboutStudentLiLastName = document.createElement("li");
-  let infoAboutStudentLiAge = document.createElement("li");
-  let infoAboutStudentLiPhone = document.createElement("li");
-  let infoAboutStudentLiEmail = document.createElement("li");
-  let infoAboutStudentLiKnowledge = document.createElement("li");
-  let infoAboutStudentLiGroup = document.createElement("li");
-  let infoAboutStudentH2 = document.createElement("h2");
-  let buttonShowPersonData = document.createElement("button");
-  let buttonDelPerson = document.createElement("button");
-
-  infoAboutStudentH1.textContent = "Info About Student:";
-  infoAboutStudentH2.textContent = "Interest: Empty...";
-  buttonShowPersonData.textContent = "Show person data";
-  buttonDelPerson.textContent = "Delete person";
-
-  studentItem.append(
-    infoAboutStudentH1,
-    infoAboutStudentLiName,
-    infoAboutStudentLiLastName,
-    infoAboutStudentLiAge,
-    infoAboutStudentLiPhone,
-    infoAboutStudentLiEmail,
-    infoAboutStudentLiKnowledge,
-    infoAboutStudentLiGroup,
-    infoAboutStudentH2,
-    buttonShowPersonData,
-    buttonDelPerson
-  );
-
-  studentList.prepend(studentItem);
-
-  infoAboutStudentLiName.textContent = `Name: ${firstName}`;
-  infoAboutStudentLiLastName.textContent = `Lastname: ${lastName}`;
-  infoAboutStudentLiAge.textContent = `Age: ${age}`;
-  infoAboutStudentLiPhone.textContent = `Phone: ${phone}`;
-  infoAboutStudentLiEmail.textContent = `Email:`;
-  infoAboutStudentLiKnowledge.textContent = `Knowledge: ${knowledge}`;
-  infoAboutStudentLiGroup.textContent = `Group: ${studentGroup.toUpperCase()}`;
-
-  //Sutvakryti ************************
-  const firstNameText = (infoAboutStudentLiName.textContent = `Name: `);
-  const emailText = (infoAboutStudentLiEmail.textContent = `Email:`);
-  let hideText = "********";
-  hideEmailOutput = "";
-  hideFirstName = firstNameText + hideText;
-  if (firstName.length > 1) {
-    infoAboutStudentLiName.textContent = hideFirstName;
-  }
-  if (email.length > 1) {
-    hideEmailOutput += infoAboutStudentLiEmail.textContent += hideText;
-  }
-
-  let output = emailText + email;
-  let nameOutput = firstNameText + firstName;
-  function changeEmail() {
-    if (email.length > 1 && firstName.length > 1)
-      if (
-        infoAboutStudentLiEmail.textContent === hideEmailOutput &&
-        infoAboutStudentLiName.textContent === hideFirstName
-      ) {
-        infoAboutStudentLiEmail.textContent = output;
-        infoAboutStudentLiName.textContent = nameOutput;
-        buttonShowPersonData.textContent = "Hide person data";
-      } else if (
-        infoAboutStudentLiEmail.textContent === output &&
-        infoAboutStudentLiName.textContent === nameOutput
-      ) {
-        infoAboutStudentLiEmail.textContent = emailText + hideText;
-        infoAboutStudentLiName.textContent = firstNameText + hideText;
-        buttonShowPersonData.textContent = "Show person data";
-      } else {
-        infoAboutStudentLiEmail.textContent = output;
-        infoAboutStudentLiName.textContent = nameOutput;
-      }
-  }
-
-  buttonShowPersonData.addEventListener("click", () => {
-    changeEmail();
+  const studentInterests = [...interests].map((interest) => {
+    return interest.value;
   });
 
-  buttonDelPerson.addEventListener("click", () => {
-    studentItem.remove();
-    messageAlert(event.target, removePersonText, "red");
-  });
-  let removePersonText = `You have deleted the person now. (${firstName} ${lastName})`;
-  //Sutvarkyti **********************
-  interest.forEach((element) => {
-    if (interest.length > 0) {
-      let interestLi = document.createElement("li");
-      interestLi.textContent = element.value;
-      infoAboutStudentH2.textContent = "Interest: ";
-      studentItem.append(interestLi, buttonShowPersonData, buttonDelPerson);
-    }
-  });
+  let studentDataObj = {
+    name: event.target["student-name"].value,
+    surname: event.target["student-surname"].value,
+    age: event.target["student-age"].value,
+    phone: event.target["student-phone"].value,
+    email: event.target["student-email"].value,
+    itKnowledge: event.target["student-it-knowledge"].value,
+    group: event.target.group.value,
+    interests: studentInterests,
+  };
 
-  let createPersonText = `Congratulations! You are created student. (${firstName} ${lastName})`;
-  messageAlert(event.target, createPersonText, "green");
+  renderSinglePerson(studentDataObj, event.target);
+
   event.target.reset();
+  localStorage.clear();
+  localStorage.setItem("name", "");
+  localStorage.setItem("surname", "");
+  localStorage.setItem("age", "");
+  localStorage.setItem("phone", "");
+  localStorage.setItem("email", "");
+  localStorage.setItem("it-knowledge", "");
+  localStorage.setItem("it-group", "");
+  localStorage.setItem("interest", JSON.stringify([]));
+  data.push(studentDataObj);
+  JSON.stringify(data);
+  data.forEach((item) => {
+    let personInformation = JSON.stringify(item);
+    localStorage.setItem("data", personInformation);
+  });
 });
 
 function messageAlert(element, message, color = "black") {
@@ -190,14 +123,24 @@ function messageAlert(element, message, color = "black") {
     previousMessageElement.remove();
   }
   const messageElement = document.createElement("span");
+  const textArea = document.getElementById("comment-area");
+  textArea.classList.remove("comment-area-off");
+  textArea.classList.add("comment-area");
+  const misterCorrect = document.getElementById("mister-image");
+  misterCorrect.classList.add("img-filter");
+
   messageElement.textContent = message;
   messageElement.style.color = color;
   messageElement.classList.add("popup-info-message");
+  messageElement.classList.add("alert-message-textarea");
 
   element.after(messageElement);
 
   setTimeout(() => {
     messageElement.remove();
+    textArea.classList.remove("comment-area");
+    textArea.classList.add("comment-area-off");
+    misterCorrect.classList.remove("img-filter");
   }, 5000);
 }
 
@@ -219,7 +162,6 @@ function renderInitialData(students, personForm) {
 }
 
 function renderSinglePerson(student, form) {
-  console.log(student);
   const firstName = student.name;
   const lastName = student.surname;
   const age = student.age;
@@ -244,11 +186,13 @@ function renderSinglePerson(student, form) {
   let infoAboutStudentH2 = document.createElement("h2");
   let buttonShowPersonData = document.createElement("button");
   let buttonDelPerson = document.createElement("button");
+  let buttonChangeData = document.createElement("button");
 
   infoAboutStudentH1.textContent = "Info About Student:";
   infoAboutStudentH2.textContent = "Interest: Empty...";
   buttonShowPersonData.textContent = "Show person data";
   buttonDelPerson.textContent = "Delete person";
+  buttonChangeData.textContent = `Change person data`;
 
   studentItem.append(
     infoAboutStudentH1,
@@ -261,10 +205,15 @@ function renderSinglePerson(student, form) {
     infoAboutStudentLiGroup,
     infoAboutStudentH2,
     buttonShowPersonData,
-    buttonDelPerson
+    buttonDelPerson,
+    buttonChangeData
   );
 
   studentList.prepend(studentItem);
+
+  buttonShowPersonData.classList.add("buttons-cards");
+  buttonDelPerson.classList.add("buttons-cards");
+  buttonChangeData.classList.add("buttons-cards");
 
   infoAboutStudentLiName.textContent = `Name: ${firstName}`;
   infoAboutStudentLiLastName.textContent = `Lastname: ${lastName}`;
@@ -325,12 +274,59 @@ function renderSinglePerson(student, form) {
       let interestLi = document.createElement("li");
       interestLi.textContent = element;
       infoAboutStudentH2.textContent = "Interest: ";
-      studentItem.append(interestLi, buttonShowPersonData, buttonDelPerson);
+      studentItem.append(
+        interestLi,
+        buttonShowPersonData,
+        buttonDelPerson,
+        buttonChangeData
+      );
     }
   });
-}
+  let createPersonText = `Congratulations! You are created student. (${firstName} ${lastName})`;
+  messageAlert(form, createPersonText, "green");
 
-// renderInitialData(initialData, form);
+  buttonChangeData.addEventListener("click", () => {
+    let submitButton = document.querySelector(".create-button");
+
+    if (submitButton.value === "Create Student") {
+      submitButton.value = "Save Changes";
+      submitButton.classList.add("save-changes");
+      form.name.value = firstName;
+      form.surname.value = lastName;
+      form.age.value = age;
+      form.phone.value = phone;
+      form.email.value = email;
+      form.group.value = studentGroup;
+      form["it-knowledge"].value = knowledge;
+      interest.forEach((interest) => {
+        form.querySelector(
+          `[name="interest"][value="${interest}"]`
+        ).checked = true;
+      });
+    } else if (submitButton.value === "Save Changes") {
+      submitButton.value = "Create Student";
+      submitButton.classList.remove("save-changes");
+      form.reset();
+    }
+
+    editStudent = studentItem;
+  });
+
+  let submitButton = document.querySelector(".create-button");
+  if (submitButton.value === "Save Changes") {
+    messageAlert(form, "You have saved your changes!", "green");
+    submitButton.value = "Create Student";
+    submitButton.style.color = "";
+  }
+  if (editStudent) {
+    submitButton.value = "Create Student";
+    submitButton.classList.remove("save-changes");
+    editStudent.replaceWith(studentItem);
+    editStudent = null;
+  } else {
+    studentList.prepend(studentItem);
+  }
+}
 
 function checkAllInputErrors(form) {
   let required = document.querySelectorAll(".required");
@@ -438,4 +434,62 @@ function checkAllInputErrors(form) {
   });
   console.log(formWorth);
   return formWorth;
+}
+
+form.addEventListener("input", (event) => {
+  if (event.target.name === "interest") {
+    let checkedInterests = form.querySelectorAll('[name="interest"]:checked');
+
+    let checkedInterestValues = [...checkedInterests].map((interest) => {
+      return interest.value;
+    });
+
+    localStorage.setItem("interest", JSON.stringify(checkedInterestValues));
+  } else {
+    localStorage.setItem(event.target.name, event.target.value);
+  }
+});
+form.name.value = localStorage.getItem("name");
+form.surname.value = localStorage.getItem("surname");
+form.age.value = localStorage.getItem("age");
+form.phone.value = localStorage.getItem("phone");
+form.email.value = localStorage.getItem("email");
+form["student-it-knowledge"].value = localStorage.getItem("it-knowledge");
+form.group.value = localStorage.getItem("group");
+
+if (localStorage.getItem("name")) {
+  form.name.value = localStorage.getItem("name");
+}
+
+if (localStorage.getItem("surname")) {
+  form.surname.value = localStorage.getItem("surname");
+}
+
+if (localStorage.getItem("age")) {
+  form.age.value = localStorage.getItem("age");
+}
+
+if (localStorage.getItem("phone")) {
+  form.phone.value = localStorage.getItem("phone");
+}
+
+if (localStorage.getItem("email")) {
+  form.email.value = localStorage.getItem("email");
+}
+
+if (localStorage.getItem("it-knowledge")) {
+  form["it-knowledge"].value = localStorage.getItem("it-knowledge");
+}
+
+if (localStorage.getItem("group")) {
+  form.group.value = localStorage.getItem("group");
+}
+let localStorageInterests = JSON.parse(localStorage.getItem("interest"));
+
+if (localStorageInterests) {
+  localStorageInterests.map((localStorageInterest) => {
+    form.querySelector(
+      '[name="interest"][value="' + localStorageInterest + '"]'
+    ).checked = true;
+  });
 }

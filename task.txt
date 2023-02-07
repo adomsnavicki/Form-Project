@@ -384,3 +384,70 @@ nemeta zinutes visur kai empty !s
 
   // Change information
   event.target.reset();
+
+
+
+
+  *****************************
+  localStorage.setItem('test', 'labas');
+localStorage.removeItem('test');
+console.log(localStorage.getItem('test'));
+
+const input = document.querySelector('form input');
+
+input.value = localStorage.getItem('input-field');
+
+input.addEventListener('input', (event) => {
+  localStorage.setItem('input-field', input.value);
+})
+******************************
+
+
+AŠTUNTA UŽDUOTIS (local storage):
+1. Vedamą tekstą į input elementus išsaugoti į localStorage.
+2. Perkrovus puslapį localStorage esančiomis reikšmėmis užpildyti input elementus.
+3. Jeigu sukuriamas studentas, tai localStorage esančias reikšmes reikia išvalyti.
+
+JSON.stringify
+JSON.parse
+
+DEŠIMTA UŽDUOTIS:
+1. Studento kūrimo ir redagavimo metu reikia sukurti visų studentų masyvą (tokiu pačiu formatu kaip ir initialData).
+2. Šį masyvą pridėti į localStorage.
+3. Puslapio perkrovimo metu iš localStorage esančio masyvo sukurti studentų sąrašą (pradinių studentų sukūrimo funkcionalumas).
+
+
+
+localStorage.setItem('name', '');
+  localStorage.setItem('surname', '');
+  localStorage.setItem('age', '');
+  localStorage.setItem('phone', '');
+  localStorage.setItem('email', '');
+  localStorage.setItem('it-knowledge', '');
+  localStorage.setItem('it-group', '');
+  localStorage.setItem('interest', JSON.stringify([]));
+})
+
+ studentInterests.forEach(interest => {
+      form.querySelector(`[name="interest"][value="${interest}"]`).checked = true;
+    })
+
+    if (event.target.name === 'interest') {
+    let checkedInterests = studentForm.querySelectorAll('[name="interest"]:checked');
+
+    let checkedInterestValues = [...checkedInterests].map(interest => {
+      return interest.value;
+    })
+
+    localStorage.setItem('interest', JSON.stringify(checkedInterestValues));
+  } else {
+    localStorage.setItem(event.target.name, event.target.value);
+  }
+
+
+  let localStorageInterests = JSON.parse(localStorage.getItem('interest'));
+
+if (localStorageInterests) {
+  localStorageInterests.map(localStorageInterest => {
+    studentForm.querySelector('[name="interest"][value="' + localStorageInterest + '"]').checked = true;
+  })

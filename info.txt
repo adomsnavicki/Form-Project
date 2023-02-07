@@ -160,3 +160,14 @@ PENKTA UŽDUOTIS (formos validacija naudojant JavaScript):
     2.2. Kiekvienas privalomas input laukelis, kuris nėra užpildytas:
         2.2.1. Turi būti apvestas raudonu rėmeliu.
         2.2.2. Šalia laukelio turi būti parašytas raudonas tekstas: „Šis laukelis yra privalomas".
+
+
+
+
+
+
+
+let test = document.getElementById("comment-area");
+  test.classList.remove("comment-area-off");
+  test.classList.add("comment-area");
+  test.remove();
