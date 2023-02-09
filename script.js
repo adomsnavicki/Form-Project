@@ -141,7 +141,7 @@ function messageAlert(element, message, color = "black") {
     textArea.classList.remove("comment-area");
     textArea.classList.add("comment-area-off");
     misterCorrect.classList.remove("img-filter");
-  }, 5000);
+  }, 55000);
 }
 
 function inputErrorMessage(element, text) {
