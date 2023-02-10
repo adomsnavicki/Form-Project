@@ -117,7 +117,7 @@ form.addEventListener("submit", (event) => {
   });
 });
 
-function messageAlert(element, message, color = "black") {
+function messageAlert(element, message, color = "white") {
   const previousMessageElement = document.querySelector(".popup-info-message");
   if (previousMessageElement) {
     previousMessageElement.remove();
@@ -141,7 +141,7 @@ function messageAlert(element, message, color = "black") {
     textArea.classList.remove("comment-area");
     textArea.classList.add("comment-area-off");
     misterCorrect.classList.remove("img-filter");
-  }, 55000);
+  }, 5000);
 }
 
 function inputErrorMessage(element, text) {
@@ -265,7 +265,7 @@ function renderSinglePerson(student, form) {
 
   buttonDelPerson.addEventListener("click", () => {
     studentItem.remove();
-    messageAlert(form, removePersonText, "red");
+    messageAlert(form, removePersonText, "white");
   });
   let removePersonText = `You have successfully removed a person (${firstName} ${lastName})`;
 
@@ -283,7 +283,7 @@ function renderSinglePerson(student, form) {
     }
   });
   let createPersonText = `Congratulations! You are created student. (${firstName} ${lastName})`;
-  messageAlert(form, createPersonText, "green");
+  messageAlert(form, createPersonText, "white");
 
   buttonChangeData.addEventListener("click", () => {
     let submitButton = document.querySelector(".create-button");
@@ -314,7 +314,7 @@ function renderSinglePerson(student, form) {
 
   let submitButton = document.querySelector(".create-button");
   if (submitButton.value === "Save Changes") {
-    messageAlert(form, "You have saved your changes!", "green");
+    messageAlert(form, "You have saved your changes!", "white");
     submitButton.value = "Create Student";
     submitButton.style.color = "";
   }
@@ -343,7 +343,7 @@ function checkAllInputErrors(form) {
     element.classList.remove("border-red");
 
     if (!element.value) {
-      messageAlert(form, "There is an empty cell!", "red");
+      messageAlert(form, "There is an empty cell!", "white");
       inputErrorMessage(element, "Field required!");
       formWorth = false;
       return;

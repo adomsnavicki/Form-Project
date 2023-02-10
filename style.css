@@ -1,4 +1,5 @@
 .all-wrapper {
+  background-image: url(img/background.svg);
   height: 1200px;
   position: relative;
 }
@@ -38,7 +39,7 @@
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
     rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-  background: linear-gradient(to top, #8ca6db, #b993d6);
+  background: linear-gradient(to top, #e7e7ec, #e7fabb);
 }
 
 .checkbox-control {
@@ -82,14 +83,14 @@
   padding-left: 20px;
   font-weight: 700;
   border-radius: 10px;
-  background: linear-gradient(to top, #8ca6db, #b993d6);
+  background: linear-gradient(to top, #e7e7ec, #e7fabb);
   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
 
 .student-item:hover {
   transform: scale(1.1);
 
-  background: linear-gradient(to right, #8ca6db, #b993d6);
+  background: linear-gradient(to top, #e7e7ec, #e7fabb);
 }
 .student-list-wrapper {
   display: flex;
@@ -110,12 +111,12 @@
   margin-top: 20px;
   border-radius: 5px;
   border: none;
-  background-color: #8e45c5;
-  box-shadow: 0 5px #562a75;
+  background-color: #c6f162;
+  box-shadow: 0 5px #277031;
   position: absolute;
   top: 400px;
   left: 400px;
-  color: white;
+  color: rgb(15, 15, 15);
 }
 .create-button:active {
   box-shadow: 0 2px #6d89c0;
@@ -148,12 +149,12 @@
   display: flex;
   border-radius: 5px;
   border: none;
-  background-color: #aa6dd8;
-  box-shadow: 0 5px #583c66;
+  background-color: #cdf0a6;
+  box-shadow: 0 5px #7ea86b;
   margin-bottom: 10px;
   margin-top: 10px;
 
-  color: white;
+  color: black;
 }
 .buttons-cards:active {
   box-shadow: 0 2px #6d89c0;
@@ -162,8 +163,6 @@
 }
 .buttons-cards:hover {
   cursor: pointer;
-
-  color: rgb(174, 226, 174);
 }
 .save-changes {
   background-color: #55a06e;
