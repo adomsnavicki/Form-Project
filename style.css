@@ -1,5 +1,8 @@
-.all-wrapper {
+body {
   background-image: url(img/background.svg);
+}
+
+.all-wrapper {
   height: 1200px;
   position: relative;
 }
